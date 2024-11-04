@@ -164,7 +164,7 @@ chokidar.watch(`${repoPath}/scss/*.scss`).on("change", () => {
     });
 });
 
-chokidar.watch(`${repoPath}/ejs/*.ejs`).on("change", () => {
+chokidar.watch([`${repoPath}/ejs/*.ejs`, `${devEjsPath}/*.ejs`]).on("change", () => {
   fs.readdirSync(devEjsPath)
     .filter((file) => file.endsWith(".ejs"))
     .forEach(async (item) => {
