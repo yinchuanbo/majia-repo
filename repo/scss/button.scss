@@ -4,10 +4,16 @@ button {
   font-size: large;
   text-align: center;
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
     inset: 0;
     font-size: 40px;
   }
+}
+
+body {
+  background-color: #999;
+  color: #fff;
 }

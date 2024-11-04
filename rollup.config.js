@@ -20,7 +20,7 @@ import alias from "@rollup/plugin-alias";
 import eslint from "@rollup/plugin-eslint";
 import stylelint from "stylelint";
 
-const lan = "en";
+const lan = process.env.LAN || 'en';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -102,9 +102,8 @@ const scssTask = (filename) => {
 
     if (lintResult.errored) {
       throw new Error(
-        `Stylelint found errors in ${filename}, ${
-          lintResult?.results?.[0]?.["warnings"]?.[0]?.["text"] ||
-          lintResult?.results
+        `Stylelint found errors in ${filename}, ${lintResult?.results?.[0]?.["warnings"]?.[0]?.["text"] ||
+        lintResult?.results
         }`
       );
     }
@@ -195,10 +194,6 @@ export default {
     format: "es",
     sourcemap: false,
     entryFileNames: "[name].min.js",
-    name: "MyBundle",
-    globals: {
-      jquery: "$",
-    },
   },
   treeshake: {
     moduleSideEffects: true,
@@ -241,7 +236,7 @@ export default {
     json(),
     serve({
       contentBase: path.resolve(__dirname, `${lan}`),
-      port: 3000,
+      port: process.env.PORT || 5000,
       open: false,
     }),
     livereload({

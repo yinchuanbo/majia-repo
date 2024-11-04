@@ -1,6 +1,6 @@
 module.exports = {
   header: {
-    ai: "Face Swap78999999",
+    ai: "Face Swap789",
     blog: "Blog78999978999999999",
     title: "Vidmud798798",
     about: "About Us",
